@@ -54,7 +54,32 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Architecture 1 (Type 1):
+In this architecture, address changes overwrite the old value (i.e., no history). This is a Type 1 SCD (Slowly Changing Dimension) as changes overwrite previous data.
+Table Name: CUSTOMER_ADDRESS
+Table Columns:
+customer_id
+street_address
+city
+state_province
+postal_code
+country
+
+
+Architecture 2 (Type 2):
+In this architecture, a history of all addresses a customer has had (with time ranges) is maintained. This is a Type 2 SCD (Slowly Changing Dimension) as changes create a new version and retain full history.
+Table Name: CUSTOMER_ADDRESS
+Table Columns:
+customer_address_id
+customer_id
+street_address
+city
+state_province
+postal_code
+country
+start_date_key
+end_date_key
+is_current
 ```
 
 ***
